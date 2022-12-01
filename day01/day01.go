@@ -9,6 +9,12 @@ import (
 	"strings"
 )
 
+func main() {
+	input := getInput()
+	result := getSumOfThreeMax(input)
+	fmt.Println("Result: ", result)
+}
+
 func getInput() string {
 	// https://adventofcode.com/2022/day/1/input
 	input, err := os.ReadFile("./input.txt")
@@ -18,10 +24,10 @@ func getInput() string {
 	return string(input)
 }
 
-func main() {
-	lines := strings.Split(getInput(), "\n")
+func getSumOfThreeMax(input string) int {
+	lines := strings.Split(input, "\n")
 	// elf := make([]int, 0)
-    // elf = append(elf, 0)
+	// elf = append(elf, 0)
 
 	// var elf []int
 	// elf = append(elf, 0)
@@ -44,7 +50,7 @@ func main() {
 		i, err := strconv.Atoi(l)
 
 		if err != nil {
-			panic(err)
+			log.Fatal(err)
 		}
 		// currentNum += i
 
@@ -67,5 +73,5 @@ func main() {
 		max += i
 	}
 
-	fmt.Println(max)
+	return max
 }
