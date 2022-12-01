@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"os"
 	"sort"
 	"strconv"
 	"strings"
@@ -9,27 +11,22 @@ import (
 
 func getInput() string {
 	// https://adventofcode.com/2022/day/1/input
-	testLine := `1000
-2000
-3000
-
-4000
-
-5000
-6000
-
-7000
-8000
-9000
-
-10000`
-	return testLine
+	input, err := os.ReadFile("./input.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	return string(input)
 }
 
 func main() {
 	lines := strings.Split(getInput(), "\n")
-	elf := make([]int, 0)
-	elf = append(elf, 0)
+	// elf := make([]int, 0)
+    // elf = append(elf, 0)
+
+	// var elf []int
+	// elf = append(elf, 0)
+
+	elf := []int{0}
 	// bigNumber := 0
 	// currentNum := 0
 
@@ -56,11 +53,19 @@ func main() {
 		elf[currentIndex] = currentValue + i
 	}
 
-	sort.Sort(sort.Reverse(sort.IntSlice(elf)))
-	sum := 0
-	for _, num := range elf[0:3] {
-		sum += num
+	// sort.Sort(sort.Reverse(sort.IntSlice(elf)))
+	// max := 0
+	// for _, num := range elf[0:3] {
+	// 	max += num
+	// }
+
+	max := 0
+
+	sort.Ints(elf)
+
+	for _, i := range elf[len(elf)-3:] {
+		max += i
 	}
 
-	fmt.Println(sum)
+	fmt.Println(max)
 }
