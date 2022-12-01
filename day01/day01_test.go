@@ -6,7 +6,8 @@ import (
 )
 
 func Test_getSumOfThreeMax(t *testing.T) {
-	input := `1000
+
+	input1 := `1000
 2000
 3000
 
@@ -21,11 +22,23 @@ func Test_getSumOfThreeMax(t *testing.T) {
 
 10000
 `
-	want := 45000
-	t.Run("test input", func(t *testing.T) {
-		if got := getSumOfThreeMax(input); !reflect.DeepEqual(got, want) {
-			t.Errorf("getSumOfThreeMax() = %v, want %v", got, want)
-		}
-	})
+	tests := []struct {
+		name string
+		args string
+		want int
+	}{
+		{
+			name: "sample input",
+			args: input1,
+			want: 45000,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := getSumOfThreeMax(tt.args); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("getSumOfThreeMax() = %v, want %v", got, tt.want)
+			}
+		})
+	}
 
 }
