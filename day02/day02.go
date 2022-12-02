@@ -34,7 +34,6 @@ func calculateScore(input string) int {
 
 		need := item[1]
 		score, me := countScoreByNeeds(elf, need)
-		fmt.Println(me, score)
 		total += score
 		total += countScoreByShape(me)
 	}
