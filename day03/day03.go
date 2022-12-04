@@ -9,12 +9,15 @@ import (
 )
 
 func main() {
-	lines := strings.Split(getInput(), "\n")
-	result := getPriority2(lines)
-	fmt.Println("Result: ", result)
+	input := getInput()
+	part1Result := getPriority1(input)
+	part2Result := getPriority2(input)
+	fmt.Println("Part 1 Result: ", part1Result)
+	fmt.Println("Part 2 Result: ", part2Result)
 }
 
-func getPriority2(lines []string) int {
+func getPriority2(input string) int {
+	lines := strings.Split(input, "\n")
 	count := 0
 	items := make(map[rune][]int)
 	sum := 0
@@ -48,34 +51,35 @@ func getPriority2(lines []string) int {
 	return sum
 }
 
-// func getPriority1(lines []string) int {
+func getPriority1(input string) int {
 
-// 	sum := 0
-// 	for _, l := range lines {
-// 		sum += parseLine(l)
-// 	}
+	lines := strings.Split(input, "\n")
+	sum := 0
+	for _, l := range lines {
+		sum += parseLine(l)
+	}
 
-// 	return sum
+	return sum
 
-// }
+}
 
-// func parseLine(l string) int {
-// 	halfLength := len(l) / 2
+func parseLine(l string) int {
+	halfLength := len(l) / 2
 
-// 	items := make(map[rune]bool)
+	items := make(map[rune]bool)
 
-// 	for _, leftPart := range l[:halfLength] {
-// 		items[leftPart] = true
-// 	}
+	for _, leftPart := range l[:halfLength] {
+		items[leftPart] = true
+	}
 
-// 	for _, rightPart := range l[halfLength:] {
-// 		if items[rightPart] {
-// 			return getNum(rightPart)
-// 		}
-// 	}
+	for _, rightPart := range l[halfLength:] {
+		if items[rightPart] {
+			return getNum(rightPart)
+		}
+	}
 
-// 	return 0
-// }
+	return 0
+}
 
 func getNum(r rune) int {
 	if unicode.IsUpper(r) {
