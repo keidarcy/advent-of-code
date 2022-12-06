@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"strconv"
@@ -12,19 +11,19 @@ import (
 
 func main() {
 	input := getInput()
-	contain := getTop(input)
+	oldTop := getTop(input, false)
+	newTop := getTop(input, true)
 	// overlap := getOther(input)
-	fmt.Println("top", contain)
-	// fmt.Println("other", overlap)
+	dump.P("old top", oldTop)
+	dump.P("new top", newTop)
 }
 
-func getTop(input string) string {
-	lines := []string{"                                   "}
+func getTop(input string, isNew bool) string {
+	lines := []string{strings.Repeat(" ", 100)}
 	lines = append(lines, strings.Split(input, "\n")...)
 
 	stack := make([][]string, 0)
 
-	fmt.Println((len(lines[4]) + 1) / 4)
 	n := (len(lines[4]) + 1) / 4
 
 	for i, l := range lines {
@@ -66,15 +65,18 @@ func getTop(input string) string {
 		cut := stack[from][fromLen-move:]
 		stack[from] = stack[from][:fromLen-move]
 		// reverse cut
-		for i, j := 0, len(cut)-1; i < j; i, j = i+1, j-1 {
-			cut[i], cut[j] = cut[j], cut[i]
+		if !isNew {
+
+			for i, j := 0, len(cut)-1; i < j; i, j = i+1, j-1 {
+				cut[i], cut[j] = cut[j], cut[i]
+			}
 		}
 		stack[to] = append(stack[to], cut...)
 	}
 
 	result := ""
 
-	dump.P(stack)
+	// dump.P(stack)
 	for i := 0; i < n; i++ {
 		result += stack[i][len(stack[i])-1]
 	}
@@ -95,7 +97,6 @@ func dropEmpty(n int, matrix [][]string) {
 
 func parseLine(line string) (int, int, int) {
 	l := strings.Split(line, " ")
-	fmt.Println(line)
 	move, err := strconv.Atoi(l[1])
 	if err != nil {
 		log.Fatal("BAD INPUT")
