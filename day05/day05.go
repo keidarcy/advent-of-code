@@ -60,18 +60,8 @@ func getTop(input string, isNew bool) string {
 
 	// move stack
 	for _, l := range lines[n+2:] {
-		move, from, to := parseLine(l)
-		fromLen := len(stack[from])
-		cut := stack[from][fromLen-move:]
-		stack[from] = stack[from][:fromLen-move]
-		// reverse cut
-		if !isNew {
-
-			for i, j := 0, len(cut)-1; i < j; i, j = i+1, j-1 {
-				cut[i], cut[j] = cut[j], cut[i]
-			}
-		}
-		stack[to] = append(stack[to], cut...)
+		movement := getMovement(l)
+		movement.operate(stack, isNew)
 	}
 
 	result := ""
@@ -82,6 +72,26 @@ func getTop(input string, isNew bool) string {
 	}
 
 	return result
+}
+
+type Movement struct {
+	move int
+	from int
+	to   int
+}
+
+func (m Movement) operate(stack [][]string, isNew bool) {
+	fromLen := len(stack[m.from])
+	cut := stack[m.from][fromLen-m.move:]
+	stack[m.from] = stack[m.from][:fromLen-m.move]
+	// reverse cut
+	if !isNew {
+
+		for i, j := 0, len(cut)-1; i < j; i, j = i+1, j-1 {
+			cut[i], cut[j] = cut[j], cut[i]
+		}
+	}
+	stack[m.to] = append(stack[m.to], cut...)
 }
 
 func dropEmpty(n int, matrix [][]string) {
@@ -95,7 +105,7 @@ func dropEmpty(n int, matrix [][]string) {
 	}
 }
 
-func parseLine(line string) (int, int, int) {
+func getMovement(line string) Movement {
 	l := strings.Split(line, " ")
 	move, err := strconv.Atoi(l[1])
 	if err != nil {
@@ -109,7 +119,11 @@ func parseLine(line string) (int, int, int) {
 	if err != nil {
 		log.Fatal("BAD INPUT")
 	}
-	return move, from - 1, to - 1
+	return Movement{
+		move: move,
+		from: from - 1,
+		to:   to - 1,
+	}
 }
 
 func rotateMatrix(n int, matrix [][]string) {
@@ -139,14 +153,6 @@ func rotateMatrix(n int, matrix [][]string) {
 // 7, 4, 1
 // 8, 5, 2
 // 9, 6, 3
-
-// func parseLine(line string) bool {
-// 	return false
-// }
-
-// func getOther(input string) string {
-// 	return ""
-// }
 
 func getInput() string {
 	input, err := os.ReadFile("./input.txt")
