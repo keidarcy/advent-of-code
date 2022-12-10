@@ -62,7 +62,6 @@ func getPart2(input string) {
 	images := [][]string{}
 	image := []string{}
 
-	// crd = cycle - 1
 	cycle := 0
 	x := 1
 	for _, l := range lines {

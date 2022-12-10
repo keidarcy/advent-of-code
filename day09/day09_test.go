@@ -38,14 +38,14 @@ R 2`
 
 func Test_part2(t *testing.T) {
 
-	input1 := `R 4
-U 4
-L 3
-D 1
-R 4
-D 1
-L 5
-R 2`
+	input1 := `R 5
+U 8
+L 8
+D 3
+R 17
+D 10
+L 25
+U 20`
 	tests := []struct {
 		name string
 		args string
@@ -54,7 +54,7 @@ R 2`
 		{
 			name: "day 09 part 2",
 			args: input1,
-			want: 8,
+			want: 36,
 		},
 	}
 	for _, tt := range tests {
