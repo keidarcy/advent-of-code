@@ -186,36 +186,6 @@ func parseMonkey(lines []string) Monkey {
 	return monkey
 }
 
-// func getPart2(input string) {
-// 	lines := strings.Split(input, "\n")
-// 	images := [][]string{}
-// 	image := []string{}
-
-// 	cycle := 0
-// 	x := 1
-// 	for _, l := range lines {
-// 		line := parseLine1(l)
-// 		// add cycle by command but add x end of command
-// 		for i := 0; i < line.c; i++ {
-// 			if cycle%40 == 0 {
-// 				images = append(images, image)
-// 				image = []string{}
-// 			}
-// 			cycle++
-// 			image = append(image, ".")
-// 			handleImage(image, x)
-// 		}
-// 		x += line.x
-
-// 	}
-// 	images = append(images, image)
-
-// 	// print it
-// 	for _, i := range images[1:] {
-// 		fmt.Println(i)
-// 	}
-// }
-
 func getInput() string {
 	input, err := os.ReadFile("./input.txt")
 	if err != nil {
