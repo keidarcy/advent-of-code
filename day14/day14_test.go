@@ -17,7 +17,7 @@ func Test_part1(t *testing.T) {
 		{
 			name: "day 14 part 1",
 			args: input1,
-			want: 13,
+			want: 24,
 		},
 	}
 	for _, tt := range tests {
@@ -42,7 +42,7 @@ func Test_part2(t *testing.T) {
 		{
 			name: "day 14 part 2",
 			args: input1,
-			want: 140,
+			want: 93,
 		},
 	}
 	for _, tt := range tests {
