@@ -10,9 +10,9 @@ import (
 
 func main() {
 	input := getInput()
-	// part1 := getPart1(input)
+	part1 := getPart1(input)
 	part2 := getPart2(input)
-	// fmt.Println("part1 result: ", part1)
+	fmt.Println("part1 result: ", part1)
 	fmt.Println("part2 result: ", part2)
 }
 
@@ -131,7 +131,7 @@ func getPart2(input string) int {
 	newCave.addCaveFloor()
 	sand := newCave.countSandHasFloor()
 
-	newCave.showCave()
+	// newCave.showCave()
 
 	return sand
 }
