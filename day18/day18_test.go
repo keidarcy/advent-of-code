@@ -7,40 +7,28 @@ import (
 
 func Test_part1(t *testing.T) {
 
-	input1 := `
-$ cd /
-$ ls
-dir a
-14848514 b.txt
-8504156 c.dat
-dir d
-$ cd a
-$ ls
-dir e
-29116 f
-2557 g
-62596 h.lst
-$ cd e
-$ ls
-584 i
-$ cd ..
-$ cd ..
-$ cd d
-$ ls
-4060174 j
-8033020 d.log
-5626152 d.ext
-7214296 k
-`
+	input1 := `2,2,2
+1,2,2
+3,2,2
+2,1,2
+2,3,2
+2,2,1
+2,2,3
+2,2,4
+2,2,6
+1,2,5
+3,2,5
+2,1,5
+2,3,5`
 	tests := []struct {
 		name string
 		args string
 		want int
 	}{
 		{
-			name: "day 07 part 1",
+			name: "day 18 part 1",
 			args: input1,
-			want: 95437,
+			want: 64,
 		},
 	}
 	for _, tt := range tests {
@@ -55,40 +43,28 @@ $ ls
 
 func Test_part2(t *testing.T) {
 
-	input1 := `
-$ cd /
-$ ls
-dir a
-14848514 b.txt
-8504156 c.dat
-dir d
-$ cd a
-$ ls
-dir e
-29116 f
-2557 g
-62596 h.lst
-$ cd e
-$ ls
-584 i
-$ cd ..
-$ cd ..
-$ cd d
-$ ls
-4060174 j
-8033020 d.log
-5626152 d.ext
-7214296 k
-`
+	input1 := `2,2,2
+1,2,2
+3,2,2
+2,1,2
+2,3,2
+2,2,1
+2,2,3
+2,2,4
+2,2,6
+1,2,5
+3,2,5
+2,1,5
+2,3,5`
 	tests := []struct {
 		name string
 		args string
 		want int
 	}{
 		{
-			name: "day 07 part 2",
+			name: "day 18 part 2",
 			args: input1,
-			want: 24933642,
+			want: 58,
 		},
 	}
 	for _, tt := range tests {
@@ -98,5 +74,4 @@ $ ls
 			}
 		})
 	}
-
 }

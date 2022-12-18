@@ -69,7 +69,7 @@ func getPart1(input string) int {
 	return result
 }
 
-func getPart2(input string) {
+func getPart2(input string) int {
 	lines := strings.Split(input, "\n")
 
 	dirs := []*node{}
@@ -119,11 +119,11 @@ func getPart2(input string) {
 
 	for _, dir := range dirs {
 		if dir.size > targetSize {
-			return dir.name
+			return dir.size
 		}
 
 	}
-	return "NO NAME"
+	return -1
 }
 
 func countSize(n node) int {
