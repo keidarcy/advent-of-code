@@ -32,6 +32,9 @@ func getPart1(input string) int {
 	var currentDir *node
 
 	for _, line := range lines {
+		if line == "" {
+			continue
+		}
 		command := strings.Split(line, " ")
 
 		// $ cd a
@@ -76,6 +79,9 @@ func getPart2(input string) int {
 	var currentDir *node
 
 	for _, line := range lines {
+		if line == "" {
+			continue
+		}
 		command := strings.Split(line, " ")
 
 		// $ cd a
