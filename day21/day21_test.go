@@ -66,9 +66,9 @@ hmdt: 32`
 		want int
 	}{
 		{
-			name: "day 18 part 2",
+			name: "day 21 part 2",
 			args: input1,
-			want: 58,
+			want: 301,
 		},
 	}
 	for _, tt := range tests {
