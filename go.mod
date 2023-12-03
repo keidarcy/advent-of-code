@@ -1,4 +1,4 @@
-module github.com/keidarcy/aoc-2022
+module github.com/keidarcy/advent-of-code
 
 go 1.19
 
