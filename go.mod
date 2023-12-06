@@ -2,11 +2,11 @@ module github.com/keidarcy/advent-of-code
 
 go 1.19
 
-require github.com/gookit/goutil v0.6.0
+require github.com/gookit/goutil v0.6.14
 
 require (
-	github.com/gookit/color v1.5.2 // indirect
-	github.com/xo/terminfo v0.0.0-20210125001918-ca9a967f8778 // indirect
-	golang.org/x/sys v0.0.0-20220829200755-d48e67d00261 // indirect
-	golang.org/x/text v0.4.0 // indirect
+	github.com/gookit/color v1.5.4 // indirect
+	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
+	golang.org/x/sys v0.15.0 // indirect
+	golang.org/x/text v0.14.0 // indirect
 )
